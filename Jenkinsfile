@@ -14,7 +14,7 @@ pipeline {
     stage('Build Docker Image') {
     	agent any
       steps {
-      	sh 'docker build -t ciarafennessy/qa-petclinic-team2.'
+      	sh 'docker build -t ciarafennessy/qa-petclinic-team2:latest .'
       }
     }
   }
