@@ -1,21 +1,15 @@
 pipeline {
-	agent none
-  stages {
-  	stage('Maven Install') {
-    	agent {
-      	docker {
-        	image 'maven:3.5.0'
-        }
+	agent any
+  tools{
+    maven 'Maven-3.8.7'
+  }
+  stages{
+    stage('Build Maven'){
+      steps{
+        checkout scmGit(branches: [[name: '*/dev']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/Kiishi25/Team2-Final-Project.git']])
+        sh 'mvn clean install'
       }
-      steps {
-      	sh 'mvn clean install'
-      }
-    }
-    stage('Build Docker Image') {
-    	agent any
-      steps {
-      	sh 'docker build -t ciarafennessy/qa-petclinic-team2:spring-petclinic-rest: latest .'
-      }
+
     }
   }
 }
