@@ -11,6 +11,11 @@ pipeline {
       	sh 'mvn clean install'
       }
     }
-    
+    stage('Build Docker Image') {
+    	agent any
+      steps {
+      	sh 'docker build -t ciarafennessy/qa-petclinic-team2:spring-petclinic-rest: latest .'
+      }
+    }
   }
 }
