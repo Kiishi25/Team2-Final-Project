@@ -6,7 +6,7 @@ pipeline {
   stages{
     stage('Build Maven'){
       steps{
-        checkout scmGit(branches: [[name: '*/dev']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/Kiishi25/Team2-Final-Project.git']])
+        checkout scmGit(branches: [[name: '*/jenkins']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/Kiishi25/Team2-Final-Project.git']])
         sh 'mvn clean install'
       }
 
