@@ -13,14 +13,14 @@ pipeline {
                     }
       }
 
-    }
-    stage('Test'){
+    
+      stage('Test'){
                 steps{
                 sh 'mvn clean test'
                     }
                 }
 
-    stage('Build Docker Image'){
+      stage('Build Docker Image'){
                 steps{
                   
                   script{
@@ -29,7 +29,7 @@ pipeline {
               
                 }
             }
-    stage('Login and Push image to Hub'){
+      stage('Login and Push image to Hub'){
                 steps{
                     script{
                         withCredentials([string(credentialsId: 'DockerHubPwd', variable: 'DockerHubPwd')]) {
@@ -40,16 +40,16 @@ pipeline {
                 }
             }
 
-stage("Deploy to cluster - docker swarm"){
+      stage("Deploy to cluster - docker swarm"){
 
 }
 
-stage('Remove image locally'){
+      stage('Remove image locally'){
                 steps{
                     sh 'docker rmi -f kiishi25/spring-petclinic:latest'
                 }
             }
 }
-  
+}
 
 
