@@ -40,9 +40,7 @@ pipeline {
                 }
             }
 
-      stage("Deploy to cluster - docker swarm"){
-
-}
+     
 
       stage('Remove image locally'){
                 steps{
