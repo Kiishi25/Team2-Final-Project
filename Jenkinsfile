@@ -40,7 +40,6 @@ pipeline {
                 }
             }
 
-     
 
       stage('Remove image locally'){
                 steps{
